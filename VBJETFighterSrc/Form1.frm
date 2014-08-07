@@ -236,6 +236,7 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
+
 Dim u, d, l, r  As Boolean ' Basic true/false variables
 
 
@@ -261,8 +262,8 @@ Private Sub Form_Load()
     
     lblScore.Caption = "0"
     
-    VBJet.x = 0
-    VBJet.y = 0
+    VBJet.X = 0
+    VBJet.Y = 0
     
     EnemyJetCount = 2
     EnemyJetMVar = 10
@@ -273,7 +274,7 @@ Private Sub Form_Load()
     For i = 1 To EnemyJetCount
         'EnemyJet(i).X = Rnd(Me.ScaleWidth / 2) + Me.ScaleWidth / 2
         'EnemyJet(i).Y = Rnd(Me.ScaleHeight)
-        EnemyJet(i).speed = 5
+        EnemyJet(i).Speed = 5
         'On Error Resume Next
         Load en(i)
         en(i).Visible = True
@@ -296,11 +297,11 @@ End Sub
 Private Sub shooter_KeyDown(KeyCode As Integer, Shift As Integer)
 
     '
-    If KeyCode = 49 Then speed = speed - 1
-    If speed <= 0 Then speed = 0
-    If speed > 30 Then speed = 30
+    If KeyCode = 49 Then Speed = Speed - 1
+    If Speed <= 0 Then Speed = 0
+    If Speed > 30 Then Speed = 30
     
-    If KeyCode = 50 Then speed = speed + 1
+    If KeyCode = 50 Then Speed = Speed + 1
     If KeyCode = vbKeyLeft Then l = True
     If KeyCode = vbKeyRight Then r = True
     If KeyCode = vbKeyUp Then u = True
@@ -348,32 +349,32 @@ Private Sub Timer2_Timer()
 
 
     If l Then
-        VBJet.x = VBJet.x - speed
-        If VBJet.x < 0 Then VBJet.x = 0
+        VBJet.X = VBJet.X - Speed
+        If VBJet.X < 0 Then VBJet.X = 0
     End If
     
     If r Then
-        VBJet.x = VBJet.x + speed
-        If VBJet.x >= Me.ScaleWidth - 100 Then VBJet.x = Me.ScaleWidth - 100
+        VBJet.X = VBJet.X + Speed
+        If VBJet.X >= Me.ScaleWidth - 100 Then VBJet.X = Me.ScaleWidth - 100
    End If
     
     If u Then
-        VBJet.y = VBJet.y - speed
-        If VBJet.y < 0 Then VBJet.y = 0
+        VBJet.Y = VBJet.Y - Speed
+        If VBJet.Y < 0 Then VBJet.Y = 0
     End If
     
     If d Then
-        VBJet.y = VBJet.y + speed
-        If VBJet.y >= Me.ScaleHeight - 100 Then VBJet.y = Me.ScaleHeight - 100
+        VBJet.Y = VBJet.Y + Speed
+        If VBJet.Y >= Me.ScaleHeight - 100 Then VBJet.Y = Me.ScaleHeight - 100
     End If
     
-    Label5.Caption = "X = " & VBJet.x
-    Label6.Caption = "Y = " & VBJet.y
+    Label5.Caption = "X = " & VBJet.X
+    Label6.Caption = "Y = " & VBJet.Y
     
-    shooter.Left = VBJet.x
-    shooter.Top = VBJet.y
+    shooter.Left = VBJet.X
+    shooter.Top = VBJet.Y
     
-    Label3.Caption = CStr(speed)
+    Label3.Caption = CStr(Speed)
     
     
     Dim i As Integer
@@ -381,28 +382,28 @@ Private Sub Timer2_Timer()
     
     If VBJetMissile.Visible Then
         
-        VBJetMissile.x = VBJetMissile.x + 20
-        If VBJetMissile.x > Me.ScaleWidth Then
+        VBJetMissile.X = VBJetMissile.X + 20
+        If VBJetMissile.X > Me.ScaleWidth Then
             VBJetMissile.Visible = False
             fire.Visible = False
         
         End If
         
-        fire.Left = VBJetMissile.x
-        fire.Top = VBJetMissile.y
+        fire.Left = VBJetMissile.X
+        fire.Top = VBJetMissile.Y
         
         
         If level_score = 9 Then
 '            MsgBox "Good work Level completed!!!" & vbCrLf & "Now starting Level " & stage + 1, vbInformation, "Congratulations!"
             stage = stage + 1
             level_score = 0
-            EnemyJet(i).speed = EnemyJet(i).speed + 5 ' Increase enemny speed
+            EnemyJet(i).Speed = EnemyJet(i).Speed + 5 ' Increase enemny speed
 
             en(i).Picture = LoadPicture((App.Path & "\data\op2.gif"))
         End If
         
         
-        If (VBJetMissile.y > EnemyJet(i).y And VBJetMissile.y < EnemyJet(i).y + 60) And (VBJetMissile.x > EnemyJet(i).x) Then
+        If (VBJetMissile.Y > EnemyJet(i).Y And VBJetMissile.Y < EnemyJet(i).Y + 60) And (VBJetMissile.X > EnemyJet(i).X) Then
             score = score + 10
             level_score = level_score + 1
             VBJetMissile.Visible = False
@@ -415,29 +416,29 @@ Private Sub Timer2_Timer()
         fire.Visible = False
     End If
     
-    EnemyJet(i).x = EnemyJet(i).x - EnemyJet(i).speed
-    If EnemyJet(i).y > VBJet.y Then
-        EnemyJet(i).y = EnemyJet(i).y - (Rnd(EnemyJetMVar))
+    EnemyJet(i).X = EnemyJet(i).X - EnemyJet(i).Speed
+    If EnemyJet(i).Y > VBJet.Y Then
+        EnemyJet(i).Y = EnemyJet(i).Y - (Rnd(EnemyJetMVar))
     Else
-        EnemyJet(i).y = EnemyJet(i).y + (Rnd(EnemyJetMVar))
+        EnemyJet(i).Y = EnemyJet(i).Y + (Rnd(EnemyJetMVar))
     End If
     
-    en(i).Left = EnemyJet(i).x
-    en(i).Top = EnemyJet(i).y
+    en(i).Left = EnemyJet(i).X
+    en(i).Top = EnemyJet(i).Y
     
-    If EnemyJet(i).x < -200 Then
+    If EnemyJet(i).X < -200 Then
         SetEn i
-        en(i).Top = EnemyJet(i).y
+        en(i).Top = EnemyJet(i).Y
     End If
     lblScore = CStr(score)
     lblStage = CStr(stage)
     
-    Label8.Caption = "EX = " & EnemyJet(i).x
-    Label7.Caption = "EY = " & EnemyJet(i).y
+    Label8.Caption = "EX = " & EnemyJet(i).X
+    Label7.Caption = "EY = " & EnemyJet(i).Y
     
     
         
-    If (VBJet.y > EnemyJet(i).y - 40 And VBJet.y < EnemyJet(i).y + 30) And (VBJet.x > EnemyJet(i).x And VBJet.x < EnemyJet(i).x + 100) Then
+    If (VBJet.Y > EnemyJet(i).Y - 40 And VBJet.Y < EnemyJet(i).Y + 30) And (VBJet.X > EnemyJet(i).X And VBJet.X < EnemyJet(i).X + 100) Then
         
       VBJet.Power = VBJet.Power + 1
       'If VBJet.power > 1 Then MediaPlayer2.Play
@@ -478,8 +479,8 @@ Private Sub FireIt()
     'MediaPlayer1.Play
     VBJetMissile.Visible = True
     
-    VBJetMissile.x = shooter.Left + 100
-    VBJetMissile.y = shooter.Top + 50
+    VBJetMissile.X = shooter.Left + 100
+    VBJetMissile.Y = shooter.Top + 50
     fire.Visible = True
 End Sub
 
@@ -489,10 +490,10 @@ End Sub
 Public Sub SetEn(index As Integer)
     
     
-    EnemyJet(index).y = Int(Rnd * Me.ScaleHeight) - 100
-    EnemyJet(index).x = Int(Rnd * Me.ScaleHeight) + Me.ScaleWidth
-    en(index).Left = EnemyJet(index).x
-    en(index).Top = EnemyJet(index).y
+    EnemyJet(index).Y = Int(Rnd * Me.ScaleHeight) - 100
+    EnemyJet(index).X = Int(Rnd * Me.ScaleHeight) + Me.ScaleWidth
+    en(index).Left = EnemyJet(index).X
+    en(index).Top = EnemyJet(index).Y
     
     
 
@@ -501,7 +502,7 @@ End Sub
 Private Sub Timer3_Timer()
     Dim i As Integer
     For i = 1 To EnemyJetCount
-        EnemyJet(i).speed = EnemyJet(i).speed + 5
+        EnemyJet(i).Speed = EnemyJet(i).Speed + 5
         EnemyJetMVar = EnemyJetMVar + 5
     Next i
 End Sub
