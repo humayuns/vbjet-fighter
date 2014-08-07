@@ -252,11 +252,7 @@ Dim stage As Long
 Dim level_score As Integer
 
 
-
-
 Private Sub Form_Load()
-    
-
     
     ' Startup and basic settings
     
@@ -287,7 +283,6 @@ Private Sub Form_Load()
     stage = 1
 
 End Sub
-
 
 
 Private Sub Form_Paint()
@@ -489,14 +484,11 @@ End Sub
 ' Set enemy postion
 Public Sub SetEn(index As Integer)
     
-    
     EnemyJet(index).Y = Int(Rnd * Me.ScaleHeight) - 100
     EnemyJet(index).X = Int(Rnd * Me.ScaleHeight) + Me.ScaleWidth
     en(index).Left = EnemyJet(index).X
     en(index).Top = EnemyJet(index).Y
     
-    
-
 End Sub
 
 Private Sub Timer3_Timer()
