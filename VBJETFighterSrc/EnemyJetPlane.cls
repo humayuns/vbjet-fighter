@@ -21,60 +21,60 @@ Private mvarPower As Integer 'local copy
 Private mvarSpeed As Integer 'local copy
 
 Public Property Let Speed(ByVal vData As Integer)
-'used when assigning a value to the property, on the left side of an assignment.
-'Syntax: X.Speed = 5
+	'used when assigning a value to the property, on the left side of an assignment.
+	'Syntax: X.Speed = 5
     mvarSpeed = vData
 End Property
 
 
 Public Property Get Speed() As Integer
-'used when retrieving value of a property, on the right side of an assignment.
-'Syntax: Debug.Print X.Speed
+	'used when retrieving value of a property, on the right side of an assignment.
+	'Syntax: Debug.Print X.Speed
     Speed = mvarSpeed
 End Property
 
 
 
 Public Property Let Power(ByVal vData As Integer)
-'used when assigning a value to the property, on the left side of an assignment.
-'Syntax: X.Power = 5
+	'used when assigning a value to the property, on the left side of an assignment.
+	'Syntax: X.Power = 5
     mvarPower = vData
 End Property
 
 
 Public Property Get Power() As Integer
-'used when retrieving value of a property, on the right side of an assignment.
-'Syntax: Debug.Print X.Power
+	'used when retrieving value of a property, on the right side of an assignment.
+	'Syntax: Debug.Print X.Power
     Power = mvarPower
 End Property
 
 
 
 Public Property Let Y(ByVal vData As Integer)
-'used when assigning a value to the property, on the left side of an assignment.
-'Syntax: X.Y = 5
+	'used when assigning a value to the property, on the left side of an assignment.
+	'Syntax: X.Y = 5
     mvarY = vData
 End Property
 
 
 Public Property Get Y() As Integer
-'used when retrieving value of a property, on the right side of an assignment.
-'Syntax: Debug.Print X.Y
+	'used when retrieving value of a property, on the right side of an assignment.
+	'Syntax: Debug.Print X.Y
     Y = mvarY
 End Property
 
 
 
 Public Property Let X(ByVal vData As Integer)
-'used when assigning a value to the property, on the left side of an assignment.
-'Syntax: X.X = 5
+	'used when assigning a value to the property, on the left side of an assignment.
+	'Syntax: X.X = 5
     mvarX = vData
 End Property
 
 
 Public Property Get X() As Integer
-'used when retrieving value of a property, on the right side of an assignment.
-'Syntax: Debug.Print X.X
+	'used when retrieving value of a property, on the right side of an assignment.
+	'Syntax: Debug.Print X.X
     X = mvarX
 End Property
 
