@@ -326,12 +326,12 @@ End Sub
 
 Private Sub Timer1_Timer()
 
-    Static ch As Boolean
+    ' Static variable can be accessed from anywhere in program.
+    Static ch As Boolean ' ch variable is used for animation of player jet.
     
     ch = Not ch
     
     ' Animation steps of Jet Fighter
-    
     If ch Then
         shooter.Picture = Picture2.Picture
     Else
