@@ -309,7 +309,6 @@ Private Sub shooter_KeyDown(KeyCode As Integer, Shift As Integer)
     End If
     If KeyCode = vbKeyEscape Then Unload Me: Form2.Show
     
-
 End Sub
 
 
