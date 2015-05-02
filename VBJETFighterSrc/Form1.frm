@@ -274,7 +274,7 @@ Private Sub Form_Load()
         'On Error Resume Next
         Load en(i)
         en(i).Visible = True
-        SetEn i
+        SetEnemyPosition i
         
     Next i
     
@@ -339,6 +339,8 @@ Private Sub Timer1_Timer()
 
 End Sub
 
+
+' This is the main game loop
 Private Sub Timer2_Timer()
 
 
@@ -401,7 +403,7 @@ Private Sub Timer2_Timer()
             score = score + 10
             level_score = level_score + 1
             VBJetMissile.Visible = False
-            SetEn i
+            SetEnemyPosition i
         End If
         
 
@@ -421,7 +423,7 @@ Private Sub Timer2_Timer()
     en(i).Top = EnemyJet(i).Y
     
     If EnemyJet(i).X < -200 Then
-        SetEn i
+        SetEnemyPosition i
         en(i).Top = EnemyJet(i).Y
     End If
     lblScore = CStr(score)
@@ -438,7 +440,7 @@ Private Sub Timer2_Timer()
       'If VBJet.power > 1 Then MediaPlayer2.Play
       Picture1.BackColor = RGB(Rnd * 255, Rnd * 255, Rnd * 255)
       
-      SetEn i
+      SetEnemyPosition i
 
       
       Select Case VBJet.Power
@@ -481,7 +483,7 @@ End Sub
 
 
 ' Set enemy postion
-Public Sub SetEn(index As Integer)
+Public Sub SetEnemyPosition(index As Integer)
     
     EnemyJet(index).Y = Int(Rnd * Me.ScaleHeight) - 100
     EnemyJet(index).X = Int(Rnd * Me.ScaleHeight) + Me.ScaleWidth
