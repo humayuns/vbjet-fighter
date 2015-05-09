@@ -237,7 +237,9 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 
-Dim u, d, l, r  As Boolean ' Basic true/false variables
+
+' u = Up, d = Down, l = Left, r = Right
+Dim u, d, l, r   As Boolean ' Basic true/false variables
 
 
 Dim VBJet As New JETPlane
